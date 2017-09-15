@@ -1,6 +1,14 @@
 class PagesController < ApplicationController
   def home
-      user = User.all
-      render :json => user.to_json(:include => :comments)
+      users = User.all
+
+      respond_to do |format|
+        format.html
+        format.json { render :json => users.to_json(:include => :comments) }
+    end
+  end
+
+  def show
+    
   end
 end
