@@ -1,3 +1,17 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.twitter-share-button{
+  text-decoration: none;
+  position: relative;
+  height: 20px;
+  box-sizing: border-box;
+  padding: 1px 8px 1px 6px;
+  background-color: #1b95e0;
+  color: #fff;
+  border-radius: 3px;
+  font-weight: 500;
+  cursor: pointer;
+  font: normal normal normal 11px/18px 'Helvetica Neue',Arial,sans-serif;
+}
