@@ -33,7 +33,7 @@ gem 'twitter'
 gem 'omniauth-twitter'
 gem 'rails_12factor'
 gem 'tweetstream'
-
+gem 'jquery-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
