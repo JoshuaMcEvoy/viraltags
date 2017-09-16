@@ -4,5 +4,3 @@ $twitter = Twitter::REST::Client.new do |config|
   config.access_token = ENV['TWITTER_ACCESS_TOKEN']
   config.access_token_secret = ENV['TWITTER_SECRET_TOKEN']
 end
-
-$twitter.update("My name is Serene and I do stuff and yeah")
