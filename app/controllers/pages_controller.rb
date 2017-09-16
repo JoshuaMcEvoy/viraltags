@@ -26,6 +26,12 @@ class PagesController < ApplicationController
 
       users = User.all
     @result = $twitter.user_timeline("realDonaldTrump")
+
+
+    $twitter.search("to:justinbieber marry me", result_type: "recent").take(3).each do |tweet|
+    @biebertweets = tweet.text
+      end
+    @location = @result[0].user.location.to_json
       respond_to do |format|
         format.html
         format.json { render :json => users.to_json(:include => :comments) }
