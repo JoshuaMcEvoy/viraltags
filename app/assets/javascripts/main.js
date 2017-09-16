@@ -11,12 +11,20 @@ $.ajax({
            }
        });
 
+
+// d3.json("/pages/data.json", function(error, json) {
+//     // expands scope of json
+//     root = json
+//     console.log(json)
+//     draw(json);
+// });
+
 function draw(data) {
-    var color = d3.scale.category20b();
+    var color = d3.scaleOrdinal(d3.schemeCategory20);
     var width = 420,
         barHeight = 20;
 
-    var x = d3.scale.linear()
+    var x = d3.scaleLinear()
         .range([0, width])
         .domain([0, d3.max(data)]);
 
