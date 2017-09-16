@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  # def home
+  def home
   #   TweetStream.configure do |config|
   #     config.consumer_key       = 'NGqfbpaGwt7SeUGrcKeThpewj'
   #     config.consumer_secret    = 'fN0w0qgrQmQBaYWnnmXBCcOwGaWcDkwk5qxP5dCVYXjpL3PMzG'
@@ -9,7 +9,7 @@ class PagesController < ApplicationController
   #   end
   #
   #   TweetStream::Client.new.track('jaehee') do |status|
-  #     puts "#{status}"
+  #     puts "#{status.text}"
   #   end
 
     # @statuses = []
@@ -31,7 +31,7 @@ class PagesController < ApplicationController
         format.html
         format.json { render :json => users.to_json(:include => :comments) }
 
-    end
+      end
   end
 
   def show
