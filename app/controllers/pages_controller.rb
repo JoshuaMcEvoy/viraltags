@@ -26,7 +26,7 @@ class PagesController < ApplicationController
     # end
 
       users = User.all
-
+    @result = $twitter.user_timeline("realDonaldTrump")
       respond_to do |format|
         format.html
         format.json { render :json => users.to_json(:include => :comments) }
@@ -35,6 +35,5 @@ class PagesController < ApplicationController
   end
 
   def show
-
   end
 end
