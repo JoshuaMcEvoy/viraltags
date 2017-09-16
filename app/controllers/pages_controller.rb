@@ -1,12 +1,11 @@
 class PagesController < ApplicationController
   def home
-  #   TweetStream.configure do |config|
-  #     config.consumer_key       = 'NGqfbpaGwt7SeUGrcKeThpewj'
-  #     config.consumer_secret    = 'fN0w0qgrQmQBaYWnnmXBCcOwGaWcDkwk5qxP5dCVYXjpL3PMzG'
-  #     config.oauth_token        = '908491196133027840-v0TeCDBFOeQe60EzXztc6dwAMB4F3IY'
-  #     config.oauth_token_secret = '3I25gFQVZYQI1wMA4tJQwmMKd6vtoGZfFF2DLS58QUrdr'
-  #     config.auth_method        = :oauth
-  #   end
+    # TweetStream.configure do |config|
+    #   config.consumer_key = ENV['TWITTER_CONSUMER_KEY']
+    #   config.consumer_secret = ENV['TWITTER_SECRET_KEY']
+    #   config.access_token = ENV['TWITTER_ACCESS_TOKEN']
+    #   config.access_token_secret = ENV['TWITTER_SECRET_TOKEN']
+    # end
   #
   #   TweetStream::Client.new.track('jaehee') do |status|
   #     puts "#{status.text}"
