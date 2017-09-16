@@ -32,6 +32,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'twitter'
 gem 'omniauth-twitter'
 gem 'rails_12factor'
+gem 'tweetstream'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
