@@ -9,7 +9,7 @@ class PagesController < ApplicationController
   end
 
   def home
-    @tweets =$twitter.search("to:justinbieber marry me", :result_type => "recent").take(3).collect do |tweet|
+    @tweets =$twitter.search("#[blacklivesmatter]}", :result_type => "recent").take(1).collect do |tweet|
       tweet
     end
   end
