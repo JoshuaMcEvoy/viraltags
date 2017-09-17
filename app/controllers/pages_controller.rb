@@ -11,7 +11,13 @@ class PagesController < ApplicationController
   end
 
   def home
-    @tweets =$twitter.search("to:justinbieber marry me", :result_type => "recent").take(3).collect do |tweet|
+    @tweets =$twitter.search("#[#{params}]", :result_type => "recent").take(3).collect do |tweet|
+      tweet
+    end
+  end
+
+  def lookup
+    @tweets =$twitter.search("#[#{ params[:hashtag] }]", :result_type => "recent").take(3).collect do |tweet|
       tweet
     end
   end
