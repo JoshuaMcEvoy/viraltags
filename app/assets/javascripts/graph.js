@@ -19,8 +19,13 @@ var makeVis = function(data) {
     // Define our scales
     var colorScale = d3.scale.category10();
     var xScale = d3.scale.linear()
+<<<<<<< HEAD
         .domain([ d3.min(data, function(d) { return d.created_at.length; }) - 1,
                   d3.max(data, function(d) { return d.created_at.length; }) + 1 ])
+=======
+        .domain([ d3.min(data, function(d) { return 0; }) - 1,
+                  d3.max(data, function(d) { return 24; }) + 1 ])
+>>>>>>> 1ca5e804b37c97c9e333676f0781d5251a6c4287
         .range([0, width]);
 
     var yScale = d3.scale.linear()
@@ -47,7 +52,7 @@ var makeVis = function(data) {
         .attr("x", width) // x-offset from the xAxis, move label all the way to the right
         .attr("y", -6)    // y-offset from the xAxis, moves text UPWARD!
         .style("text-anchor", "end") // right-justify text
-        .text("screenName.length");
+        .text("created_at");
 
     // Add y-axis to the canvas
     canvas.append("g")
@@ -90,7 +95,7 @@ var makeVis = function(data) {
     .enter().append("circle")
       .attr("class", "dot")
       .attr("r", 5.5) // radius size, could map to another data dimension
-      .attr("cx", function(d) { return xScale( d.screen_name.length ); })     // x position
+      .attr("cx", function(d) { return xScale( d.created_at ); })     // x position
       .attr("cy", function(d) { return yScale(d.text.length);})  // y position
       .style("fill", "0084b4")
       .on("mouseover", tipMouseover)
