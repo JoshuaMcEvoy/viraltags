@@ -11,4 +11,11 @@
 #
 
 class Search < ApplicationRecord
+  def seconds_since_midnight
+    self.created_at - self.created_at.change(:hour => 0)
+  end
+
+  def minutes_since_midnight
+    self.seconds_since_midnight / 60
+  end
 end

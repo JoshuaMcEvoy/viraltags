@@ -27,7 +27,6 @@ console.log(data)
 
     // Define our scales
     var colorScale = d3.scale.category10();
-
     // var xScale = d3.scale.linear();
     //     .domain([ d3.min(data, function(d) { return d.screen_name.length; }) - 1,
     //               d3.max(data, function(d) { return d.screen_name.length; }) + 1 ])
@@ -37,7 +36,6 @@ console.log(data)
         .domain(d3.extent(data, function(d) { return d.date; }))
         .range([0, width])
         .nice();
-
 
     var yScale = d3.scale.linear()
         .domain([ d3.min(data, function(d) { return d.text.length; }) - 1,
@@ -110,6 +108,6 @@ console.log(data)
       .attr("cx", function(d) { return xScale( d.date ); })     // x position
       .attr("cy", function(d) { return yScale(d.text.length);})  // y position
       .style("fill", "0084b4")
-      .on("mouseover", tipMouseover)
+      .on("mouseover", tipMouseover)\
       .on("mouseout", tipMouseout);
 };
