@@ -27,6 +27,7 @@ console.log(data)
 
     // Define our scales
     var colorScale = d3.scale.category10();
+<<<<<<< HEAD
     // var xScale = d3.scale.linear();
     //     .domain([ d3.min(data, function(d) { return d.screen_name.length; }) - 1,
     //               d3.max(data, function(d) { return d.screen_name.length; }) + 1 ])
@@ -36,6 +37,12 @@ console.log(data)
         .domain(d3.extent(data, function(d) { return d.date; }))
         .range([0, width])
         .nice();
+=======
+    var xScale = d3.scale.linear()
+        .domain([ d3.min(data, function(d) { return 0; }) - 1,
+                  d3.max(data, function(d) { return 24; }) + 1 ])
+        .range([0, width]);
+>>>>>>> 1ca5e804b37c97c9e333676f0781d5251a6c4287
 
     var yScale = d3.scale.linear()
         .domain([ d3.min(data, function(d) { return d.text.length; }) - 1,
@@ -62,7 +69,7 @@ console.log(data)
         .attr("x", width) // x-offset from the xAxis, move label all the way to the right
         .attr("y", -6)    // y-offset from the xAxis, moves text UPWARD!
         .style("text-anchor", "end") // right-justify text
-        .text("screenName.length");
+        .text("created_at");
 
     // Add y-axis to the canvas
     canvas.append("g")
@@ -105,7 +112,11 @@ console.log(data)
     .enter().append("circle")
       .attr("class", "dot")
       .attr("r", 5.5) // radius size, could map to another data dimension
+<<<<<<< HEAD
       .attr("cx", function(d) { return xScale( d.date ); })     // x position
+=======
+      .attr("cx", function(d) { return xScale( d.created_at ); })     // x position
+>>>>>>> 1ca5e804b37c97c9e333676f0781d5251a6c4287
       .attr("cy", function(d) { return yScale(d.text.length);})  // y position
       .style("fill", "0084b4")
       .on("mouseover", tipMouseover)
