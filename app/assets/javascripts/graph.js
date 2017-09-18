@@ -36,6 +36,7 @@ console.log(data)
         .domain(d3.extent(data, function(d) { return d.date; }))
         .range([0, width])
         .nice();
+
     var yScale = d3.scale.linear()
         .domain([ d3.min(data, function(d) { return d.text.length; }) - 1,
                   d3.max(data, function(d) { return d.text.length; }) + 1 ])
