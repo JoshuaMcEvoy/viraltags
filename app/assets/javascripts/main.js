@@ -15,7 +15,6 @@ $.ajax({
 // d3.json("/pages/data.json", function(error, json) {
 //     // expands scope of json
 //     root = json
-//     console.log(json)
 //     draw(json);
 // });
 
