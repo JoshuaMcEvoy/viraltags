@@ -128,3 +128,15 @@ ul {
   cursor: pointer;
   font: normal normal normal 11px/18px 'Helvetica Neue',Arial,sans-serif;
 }
+
+// Scatter Plot
+.dot {
+  stroke: #000;
+}
+
+.tooltip {
+  position: absolute;
+  width: 200px;
+  height: 28px;
+  pointer-events: none;
+}

@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
   def index
-
   end
 
   def show
@@ -12,7 +11,14 @@ class PagesController < ApplicationController
   end
 
   def home
+  end
 
+  def data
+    searches = Search.all
+    respond_to do |format|
+      format.html
+      format.json { render :json => searches.to_json }
+    end
   end
 
   def lookup
@@ -36,11 +42,4 @@ class PagesController < ApplicationController
     render json: @tweets
   end
 
-  def data
-    searches = Search.all
-    respond_to do |format|
-      format.html
-      format.json { render :json => searches.to_json }
-    end
-  end
 end
