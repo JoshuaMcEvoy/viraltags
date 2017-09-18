@@ -9,9 +9,23 @@
   </head>
 
   <body>
-    <ul class="nav navbar-nav">
-      <li><%= link_to 'Twitter', '/auth/twitter' %></li>
-    </ul>
+    <div class="topbar">
+      <div class="global-nav">
+        <div class="global-nav-inner">
+          <div class="container">
+            <nav>
+              <ul class="nav navbar-nav">
+                <li><%= link_to 'Twitter', '/auth/twitter' %></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <%= yield %>
+
+
   </body>
 </html>

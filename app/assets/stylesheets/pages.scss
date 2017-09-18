@@ -1,11 +1,74 @@
 body {
-  // background-color: #e6ecf0;
+  background: #e6ecf0;
+  color: #14171a;
+  font-size: 14px;
+  line-height: 20px;
+  overflow-y: scroll;
+  position: relative;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  margin: 0px;
+}
 
+//////////////////////////////////////////////////
+/// NAV START
+/////////////////////////////////////////////////
+
+nav {
+  display: inline-block;
+}
+
+ul {
+  margin: 0;
+  list-style: none;
+  padding: 0;
+}
+
+// .topbar {
+//   backface-visibility: hidden;
+//   border-bottom: 1px solid #e6ecf0;
+//   border-bottom: 1px solid rgba(0,0,0,0.05);
+//   position: fixed;
+//   top: 0;
+//   right: 0;
+//   left: 0;
+//   z-index: 1000;
+// }
+
+.global-nav {
+  border-bottom: 1px solid rgba(0,0,0,0.25);
+  height: 46px;
+  position: relative;
+  width: 100%;
+  margin-top: -14px;
+}
+
+.global-nav-inner {
+  background: #fff;
+  height: 100%;
+}
+
+.global-nav .container {
+    height: 100%;
+    max-width: 890px;
+    text-align: center;
+    width: auto;
+}
+
+/////////////////////////////////////////
+/// NAV END
+/////////////////////////////////////////
+
+.bottomContainer {
+  min-height: 450px;
+  padding: 10px 12px;
+  width: 50%;
+  background: #FFF;
+  margin: 0 auto;
 }
 
 .container {
   margin: 0 auto;
+  margin-top: 10px;
   max-width: 960px;
   // background-color: #fff;
   text-align: center;
@@ -32,6 +95,7 @@ body {
   text-align: center;
   white-space: nowrap;
   vertical-align: bottom;
+  outline: none;
 }
 
 .searchInput {
