@@ -1,0 +1,25 @@
+# == Schema Information
+#
+# Table name: searches
+#
+#  id                :integer          not null, primary key
+#  created_at        :datetime         not null
+#  text              :text
+#  screen_name       :text
+#  profile_image_url :text
+#  updated_at        :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  created_at: 2017-09-18
+  text: MyText
+  screen_name: MyText
+  profile_url: MyText
+
+two:
+  created_at: 2017-09-18
+  text: MyText
+  screen_name: MyText
+  profile_url: MyText
