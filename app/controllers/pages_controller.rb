@@ -16,7 +16,7 @@ class PagesController < ApplicationController
   def lookup
     Search.destroy_all
 
-    @tweets = $twitter.search("#[#{ params[:hashtag] }]", :result_type => "recent").take(100).collect do |tweet|
+    @tweets = $twitter.search("#[#{ params[:hashtag] }]", :result_type => "recent").take(200).collect do |tweet|
     # {
     #   :created_at => tweet.created_at,
     #   :text => tweet.text,
