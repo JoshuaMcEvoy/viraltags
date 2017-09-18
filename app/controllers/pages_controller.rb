@@ -40,10 +40,8 @@ class PagesController < ApplicationController
       Search.destroy_all
       Search.create :created_at => @created_at, :text => @text, :screen_name => @screen_name, :profile_image_url => @profile_image_url
 
-
     end
     render json: @tweets
-    raise 'hell'
   end
 
 end

@@ -33,7 +33,7 @@
     <body>
         <div id="vis-container"></div>
         <script type="text/javascript">
-            d3.json('/data/data.json', function(error, json) {
+            d3.json('/pages/data', function(error, json) {
               root = json
               makeVis(json);
             });
