@@ -84,7 +84,9 @@ console.log(data)
 
     // tooltip mouseover event handler
     var tipMouseover = function(d) {
-        var html  = d.text
+        var html  = d.text + "<br/>" +
+            "<span style='color:#00aeef;'>" + d.screen_name + "</span>"
+        d.text, d.screen_name
         tooltip.html(html)
             .style("left", (d3.event.pageX + 15) + "px")
             .style("top", (d3.event.pageY - 28) + "px")
