@@ -15,7 +15,7 @@ data.forEach(function(value, index){
   let date = moment(value.created_at)
   data[index].date = date;
   data[index].month = date.format("MMM");
-  data[index].jsDate = date.toDate();
+  data[index].jsDate = date.toDate('%Y-%m-%dT%H:%M:%SZ');
 })
 console.log(data)
     // Add the visualization svg canvas to the vis-container <div>
@@ -46,7 +46,7 @@ console.log(data)
     var xAxis = d3.svg.axis()
         .scale(xScale)
         .orient('bottom')
-        .tickFormat(d3.time.format("%B %Y"));
+        .tickFormat(d3.time.format("%Y-%m-%d"));
 
     var yAxis = d3.svg.axis()
         .scale(yScale)
