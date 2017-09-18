@@ -19,8 +19,8 @@ var makeVis = function(data) {
     // Define our scales
     var colorScale = d3.scale.category10();
     var xScale = d3.scale.linear()
-        .domain([ d3.min(data, function(d) { return d.screen_name.length; }) - 1,
-                  d3.max(data, function(d) { return d.screen_name.length; }) + 1 ])
+        .domain([ d3.min(data, function(d) { return d.created_at.length; }) - 1,
+                  d3.max(data, function(d) { return d.created_at.length; }) + 1 ])
         .range([0, width]);
 
     var yScale = d3.scale.linear()

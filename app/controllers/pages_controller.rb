@@ -26,6 +26,7 @@ class PagesController < ApplicationController
       @text = tweet.text
       @screen_name = tweet.user.screen_name
       @profile_image_url = tweet.user.profile_background_image_url
+
     Search.create :created_at => @created_at, :text => @text, :screen_name => @screen_name, :profile_image_url => @profile_image_url
     end
   end
@@ -34,7 +35,7 @@ class PagesController < ApplicationController
     searches = Search.all
     respond_to do |format|
       format.html
-      format.json { render :json => searches.to_json }
+      format.json { render :json => searches.to_json(:methods => :minutes_since_midnight) }
     end
   end
 end
