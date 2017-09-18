@@ -44,7 +44,7 @@ console.log(data)
     var xAxis = d3.svg.axis()
         .scale(xScale)
         .orient('bottom')
-        .tickFormat(d3.time.format("%m-%d"));
+        .tickFormat(d3.time.format("%H:%M:%S"));
 
     var yAxis = d3.svg.axis()
         .scale(yScale)

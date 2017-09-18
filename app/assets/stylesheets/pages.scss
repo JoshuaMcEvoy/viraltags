@@ -124,6 +124,10 @@ a {
   margin-left: 5px;
 }
 
+.searchButton:hover {
+  background-color: #0084b4;
+}
+
 .searchInput {
   color: #1B95E0;
   width: 361px;
@@ -191,6 +195,10 @@ circle.dot:hover {
     background-color: white;
 }
 
+
+a:hover{
+  color: #0084b4;
+}
 ////////////////////////////////////////
 /// graph ends
 ////////////////////////////////////////
