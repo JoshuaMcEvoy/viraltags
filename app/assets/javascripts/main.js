@@ -12,11 +12,11 @@ $.ajax({
        });
 
 
-d3.json("/pages/data.json", function(error, json) {
-    // expands scope of json
-    root = json
-    draw(json);
-});
+// d3.json("/pages/data.json", function(error, json) {
+//     // expands scope of json
+//     root = json
+//     draw(json);
+// });
 
 function draw(data) {
     var color = d3.scaleOrdinal(d3.schemeCategory20);

@@ -16,7 +16,7 @@ class PagesController < ApplicationController
   end
 
   def lookup
-    @tweets = $twitter.search("#[#{ params[:hashtag] }]", :result_type => "recent").take(1).collect do |tweet|
+    @tweets = $twitter.search("#[#{ params[:hashtag] }]", :result_type => "recent").take(20).collect do |tweet|
     # {
     #   :created_at => tweet.created_at,
     #   :text => tweet.text,
