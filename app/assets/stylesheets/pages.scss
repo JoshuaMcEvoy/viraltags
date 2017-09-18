@@ -79,6 +79,9 @@ ul {
   width: 50%;
   margin: 0 auto;
   background-color: #E8F4FB;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .searchButton {
@@ -89,13 +92,14 @@ ul {
   box-shadow: none;
   cursor: pointer;
   font-size: 14px;
-  line-height: 24px;
+  line-height: 20px;
   padding: 6px 16px;
   position: relative;
   text-align: center;
   white-space: nowrap;
   vertical-align: bottom;
   outline: none;
+  margin-left: 5px;
 }
 
 .searchInput {
