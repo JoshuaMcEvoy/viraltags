@@ -3,12 +3,21 @@ d3.json('/pages/data', function(error, json) {
   makeVis(json);
 });
 
+
 var makeVis = function(data) {
     // Common pattern for defining vis size and margins
     var margin = { top: 20, right: 20, bottom: 30, left: 40 },
         width  = 960 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
+        parseDate = d3.time.format('%Y-%m-%d').parse;
 
+data.forEach(function(value, index){
+  let date = moment(value.created_at)
+  data[index].date = date;
+  data[index].month = date.format("MMM");
+  data[index].jsDate = date.toDate('%Y-%m-%dT%H:%M:%SZ');
+})
+console.log(data)
     // Add the visualization svg canvas to the vis-container <div>
     var canvas = d3.select("#vis-container").append("svg")
         .attr("width",  width  + margin.left + margin.right)
@@ -18,16 +27,15 @@ var makeVis = function(data) {
 
     // Define our scales
     var colorScale = d3.scale.category10();
-    var xScale = d3.scale.linear()
-<<<<<<< HEAD
-        .domain([ d3.min(data, function(d) { return d.created_at.length; }) - 1,
-                  d3.max(data, function(d) { return d.created_at.length; }) + 1 ])
-=======
-        .domain([ d3.min(data, function(d) { return 0; }) - 1,
-                  d3.max(data, function(d) { return 24; }) + 1 ])
->>>>>>> 1ca5e804b37c97c9e333676f0781d5251a6c4287
-        .range([0, width]);
+    // var xScale = d3.scale.linear();
+    //     .domain([ d3.min(data, function(d) { return d.screen_name.length; }) - 1,
+    //               d3.max(data, function(d) { return d.screen_name.length; }) + 1 ])
+    //     .range([0, width]);
 
+        var xScale = d3.time.scale()
+        .domain(d3.extent(data, function(d) { return d.date; }))
+        .range([0, width])
+        .nice();
     var yScale = d3.scale.linear()
         .domain([ d3.min(data, function(d) { return d.text.length; }) - 1,
                   d3.max(data, function(d) { return d.text.length; }) + 1 ])
@@ -36,7 +44,8 @@ var makeVis = function(data) {
     // Define our axes
     var xAxis = d3.svg.axis()
         .scale(xScale)
-        .orient('bottom');
+        .orient('bottom')
+        .tickFormat(d3.time.format("%Y-%m-%d"));
 
     var yAxis = d3.svg.axis()
         .scale(yScale)
@@ -95,9 +104,9 @@ var makeVis = function(data) {
     .enter().append("circle")
       .attr("class", "dot")
       .attr("r", 5.5) // radius size, could map to another data dimension
-      .attr("cx", function(d) { return xScale( d.created_at ); })     // x position
+      .attr("cx", function(d) { return xScale( d.date ); })     // x position
       .attr("cy", function(d) { return yScale(d.text.length);})  // y position
       .style("fill", "0084b4")
-      .on("mouseover", tipMouseover)
+      .on("mouseover", tipMouseover)\
       .on("mouseout", tipMouseout);
 };
