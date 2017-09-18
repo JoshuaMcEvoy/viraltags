@@ -37,13 +37,15 @@ class PagesController < ApplicationController
       @screen_name = tweet.user.screen_name
       @profile_image_url = tweet.user.profile_background_image_url
 
-      Search.destroy_all
-      Search.create :created_at => @created_at, :text => @text, :screen_name => @screen_name, :profile_image_url => @profile_image_url
+
 
 
     end
-    render json: @tweets
-    raise 'hell'
+    # render json: @tweets
+    Search.destroy_all
+    Search.create :created_at => @created_at, :text => @text, :screen_name => @screen_name, :profile_image_url => @profile_image_url
+
+
   end
 
 end
