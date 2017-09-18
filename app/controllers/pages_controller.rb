@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   def index
+
   end
 
   def show
@@ -11,14 +12,18 @@ class PagesController < ApplicationController
   end
 
   def home
-    @tweets =$twitter.search("#[#{params}]", :result_type => "recent").take(3).collect do |tweet|
-      tweet
-    end
+
   end
 
   def lookup
-    @tweets =$twitter.search("#[#{ params[:hashtag] }]", :result_type => "recent").take(3).collect do |tweet|
-      tweet
+    @tweets =$twitter.search("#[#{ params[:hashtag] }]", :result_type => "recent").take(100).collect do |tweet|
+    {
+      :created_at => tweet.created_at,
+      :text => tweet.text,
+      # :screen_name => tweet.user.screen_name,
+      # :profile_url => tweet.user.profile_background_image_url
+    }
+
     end
     render json: @tweets
   end
