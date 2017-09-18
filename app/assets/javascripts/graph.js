@@ -3,7 +3,6 @@ d3.json('/pages/data', function(error, json) {
   makeVis(json);
 });
 
-
 var makeVis = function(data) {
     // Common pattern for defining vis size and margins
     var margin = { top: 20, right: 20, bottom: 30, left: 40 },
@@ -36,7 +35,6 @@ console.log(data)
         .domain(d3.extent(data, function(d) { return d.date; }))
         .range([0, width])
         .nice();
-
     var yScale = d3.scale.linear()
         .domain([ d3.min(data, function(d) { return d.text.length; }) - 1,
                   d3.max(data, function(d) { return d.text.length; }) + 1 ])
@@ -83,14 +81,13 @@ console.log(data)
 
     // tooltip mouseover event handler
     var tipMouseover = function(d) {
-        var html  = d.text
-        tooltip.html(html)
-            .style("left", (d3.event.pageX + 15) + "px")
-            .style("top", (d3.event.pageY - 28) + "px")
-          .transition()
-            .duration(200) // ms
-            .style("opacity", .9) // started as 0!
-
+      var html  = d.text;
+      tooltip.html(html)
+          .style("left", (d3.event.pageX + 15) + "px")
+          .style("top", (d3.event.pageY - 28) + "px")
+        .transition()
+          .duration(200) // ms
+          .style("opacity", .9) // started as 0!
     };
     // tooltip mouseout event handler
     var tipMouseout = function(d) {

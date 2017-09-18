@@ -160,6 +160,11 @@ ul {
 .dot {
     stroke: none;
 }
+
+circle.dot:hover {
+  color:red;
+}
+
 .tooltip {
     position: absolute;
     font-size: 12px;
