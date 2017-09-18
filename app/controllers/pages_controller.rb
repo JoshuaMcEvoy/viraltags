@@ -39,7 +39,6 @@ class PagesController < ApplicationController
 
 
 
-
     end
     # render json: @tweets
     Search.destroy_all
