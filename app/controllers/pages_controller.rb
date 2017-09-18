@@ -24,9 +24,8 @@ class PagesController < ApplicationController
       # :profile_url => tweet.user.profile_background_image_url
     }
 
-
-
     end
+    render json: @tweets
   end
 
   def data
