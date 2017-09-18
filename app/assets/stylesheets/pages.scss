@@ -36,6 +36,15 @@ ul {
   padding: 0;
 }
 
+li {
+  margin-top: 14px;
+}
+
+a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
 // .topbar {
 //   backface-visibility: hidden;
 //   border-bottom: 1px solid #e6ecf0;
@@ -149,6 +158,14 @@ ul {
 /////////////////////////////////////////
 /// graph start
 //////////////////////////////////////////
+
+#vis-container {
+  margin-top: 50px;
+}
+
+h1 {
+  margin-top: 50px;
+}
 
 .axis path,
 .axis line {

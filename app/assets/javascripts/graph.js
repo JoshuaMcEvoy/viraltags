@@ -60,7 +60,7 @@ console.log(data)
         .attr("x", width) // x-offset from the xAxis, move label all the way to the right
         .attr("y", -6)    // y-offset from the xAxis, moves text UPWARD!
         .style("text-anchor", "end") // right-justify text
-        .text("Tweet time");
+        .text("Tweet Time");
 
     // Add y-axis to the canvas
     canvas.append("g")
@@ -71,7 +71,7 @@ console.log(data)
         .attr("transform", "rotate(-90)") // although axis is rotated, text is not
         .attr("y", 15) // y-offset from yAxis, moves text to the RIGHT because it's rotated, and positive y is DOWN
         .style("text-anchor", "end")
-        .text("Tweet length");
+        .text("Tweet Length");
 
     // Add the tooltip container to the vis container
     // it's invisible and its position/contents are defined during mouseover
