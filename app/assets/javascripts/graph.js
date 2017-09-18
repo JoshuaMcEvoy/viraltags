@@ -107,6 +107,6 @@ console.log(data)
       .attr("cx", function(d) { return xScale( d.date ); })     // x position
       .attr("cy", function(d) { return yScale(d.text.length);})  // y position
       .style("fill", "0084b4")
-      .on("mouseover", tipMouseover)\
+      .on("mouseover", tipMouseover)
       .on("mouseout", tipMouseout);
 };
