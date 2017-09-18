@@ -128,3 +128,30 @@ ul {
   cursor: pointer;
   font: normal normal normal 11px/18px 'Helvetica Neue',Arial,sans-serif;
 }
+
+/////////////////////////////////////////
+/// graph start
+//////////////////////////////////////////
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.dot {
+    stroke: none;
+}
+.tooltip {
+    position: absolute;
+    font-size: 12px;
+    width:  auto;
+    height: auto;
+    pointer-events: none;
+    background-color: white;
+}
+
+////////////////////////////////////////
+/// graph ends
+////////////////////////////////////////
