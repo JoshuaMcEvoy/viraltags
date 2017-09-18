@@ -15,7 +15,7 @@ data.forEach(function(value, index){
   let date = moment(value.created_at)
   data[index].date = date;
   data[index].month = date.format("MMM");
-  data[index].jsDate = date.toDate('%Y-%m-%dT%H:%M:%SZ');
+  data[index].jsDate = date.toDate('%Y-%m-%d');
 })
 console.log(data)
     // Add the visualization svg canvas to the vis-container <div>
@@ -46,7 +46,7 @@ console.log(data)
     var xAxis = d3.svg.axis()
         .scale(xScale)
         .orient('bottom')
-        .tickFormat(d3.time.format("%Y-%m-%d"));
+        .tickFormat(d3.time.format("%m-%d"));
 
     var yAxis = d3.svg.axis()
         .scale(yScale)
@@ -62,7 +62,7 @@ console.log(data)
         .attr("x", width) // x-offset from the xAxis, move label all the way to the right
         .attr("y", -6)    // y-offset from the xAxis, moves text UPWARD!
         .style("text-anchor", "end") // right-justify text
-        .text("created_at");
+        .text("Tweet time");
 
     // Add y-axis to the canvas
     canvas.append("g")
@@ -73,7 +73,7 @@ console.log(data)
         .attr("transform", "rotate(-90)") // although axis is rotated, text is not
         .attr("y", 15) // y-offset from yAxis, moves text to the RIGHT because it's rotated, and positive y is DOWN
         .style("text-anchor", "end")
-        .text("Text length");
+        .text("Tweet length");
 
     // Add the tooltip container to the vis container
     // it's invisible and its position/contents are defined during mouseover
@@ -91,13 +91,26 @@ console.log(data)
           .transition()
             .duration(200) // ms
             .style("opacity", .9) // started as 0!
-
+            tempColor = this.style.fill;
+            d3.select(this)
+              .style('fill', '#00aeef')
+              .transition()
+              .ease("elastic")
+              .duration("500")
+              .attr("r", 20);
     };
     // tooltip mouseout event handler
     var tipMouseout = function(d) {
         tooltip.transition()
             .duration(300) // ms
-            .style("opacity", 0); // don't care about position!
+            .style("opacity", 0) // don't care about position!
+            d3.select(this)
+            .style('fill', tempColor)
+            .transition()
+            .ease("quad")
+            .delay("100")
+            .duration("200")
+            .attr("r", 7);
     };
 
     // Add data points!
@@ -105,7 +118,7 @@ console.log(data)
       .data(data)
     .enter().append("circle")
       .attr("class", "dot")
-      .attr("r", 5.5) // radius size, could map to another data dimension
+      .attr("r", 7) // radius size, could map to another data dimension
       .attr("cx", function(d) { return xScale( d.date ); })     // x position
       .attr("cy", function(d) { return yScale(d.text.length);})  // y position
       .style("fill", "0084b4")
