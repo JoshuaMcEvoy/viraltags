@@ -34,6 +34,7 @@ gem 'omniauth-twitter'
 gem 'rails_12factor'
 gem 'tweetstream'
 gem 'jquery-rails'
+gem 'groupdate'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
