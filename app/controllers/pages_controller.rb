@@ -11,9 +11,6 @@ class PagesController < ApplicationController
   end
 
   def home
-<<<<<<< HEAD
-    @tweets =$twitter.search("#[blacklivesmatter]}", :result_type => "recent").take(1).collect do |tweet|
-=======
     @tweets =$twitter.search("#[#{params}]", :result_type => "recent").take(3).collect do |tweet|
       tweet
     end
@@ -21,9 +18,9 @@ class PagesController < ApplicationController
 
   def lookup
     @tweets =$twitter.search("#[#{ params[:hashtag] }]", :result_type => "recent").take(3).collect do |tweet|
->>>>>>> 3a20a39105e38b81724d94fe1252ebe9db73bf25
       tweet
     end
+    render json: @tweets
   end
 
   def data
