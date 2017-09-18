@@ -22,6 +22,7 @@ class PagesController < ApplicationController
   end
 
   def lookup
+    Search.destroy_all
 
     @tweets = $twitter.search("#[#{ params[:hashtag] }]", :result_type => "recent").take(10).collect do |tweet|
 
@@ -38,11 +39,11 @@ class PagesController < ApplicationController
       @profile_image_url = tweet.user.profile_background_image_url
 
 
-
+      Search.create :created_at => @created_at, :text => @text, :screen_name => @screen_name, :profile_image_url => @profile_image_url
+      # raise 'hell'
     end
     # render json: @tweets
-    Search.destroy_all
-    Search.create :created_at => @created_at, :text => @text, :screen_name => @screen_name, :profile_image_url => @profile_image_url
+
 
 
   end
