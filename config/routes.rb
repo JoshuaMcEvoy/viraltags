@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get '/pages/lookup' => 'pages#lookup'
   get '/pages/locationPicker' => 'pages#locationPicker'
   post '/pages/lookup' => 'pages#lookup'
+  get '/pages/globe' => 'pages#globe'
 end
