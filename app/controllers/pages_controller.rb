@@ -16,8 +16,8 @@ class PagesController < ApplicationController
     lat = params[:lat]
     lng = params[:lng]
 
-    lat = lat.to_f
-    lng = lng.to_f
+    @lat = lat.to_f
+    @lng = lng.to_f
 
     #compiling string for the search as it has a certain format for geo searches
     geoCode = "Geocode:#{lat},#{lng},2km"
@@ -43,6 +43,7 @@ class PagesController < ApplicationController
     #saving the data to the database to be served in json format so D3 can utilise it
     Search.create :created_at => @created_at, :text => @text, :screen_name => @screen_name, :profile_image_url => @profile_image_url, :lat => @lat, :lng => @lng
     end
+
   end
 
   def home
