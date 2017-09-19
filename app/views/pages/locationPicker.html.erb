@@ -14,12 +14,13 @@
 
       <% @infoResults.each do |r| %>
 
-      <form id="myform" method="post" action="/pages/lookup">
-        <input type="hidden" name="location" value="<%= r["geometry"]["location"] %>" />
-        <a onclick="document.getElementById('myform').submit();"><%= r["formatted_address"]%></a>
+      <form id="myform" method="post" action="/pages/globe">
+        <input type="hidden" name="lat" value="<%= r['geometry']['location']['lat'] %>" />
+        <input type="hidden" name="lng" value="<%= r['geometry']['location']['lng'] %>" />
+        <a onclick="document.getElementById('myform').submit();"><%= r['formatted_address']%></a>
       </form>
 
-
+      
 
         <!-- <form action="/pages/lookup">
           <a href="" method="post">
