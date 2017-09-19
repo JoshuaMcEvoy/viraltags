@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 20170918013220) do
     t.text "text"
     t.text "screen_name"
     t.text "profile_image_url"
+    t.text "lat"
+    t.text "lng"
     t.datetime "updated_at", null: false
   end
 

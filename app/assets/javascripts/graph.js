@@ -3,11 +3,11 @@ d3.json('/pages/data', function(error, json) {
   makeVis(json);
 });
 
-var makeVis = function(data) {
+const makeVis = function(data) {
     // Common pattern for defining vis size and margins
-    var margin = { top: 20, right: 20, bottom: 30, left: 40 },
-        width  = 960 - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom;
+    const margin = { top: 20, right: 20, bottom: 30, left: 40 },
+        width  = screen.width / 2,
+        height = screen.height / 2;
         parseDate = d3.time.format('%Y-%m-%d').parse;
 
 data.forEach(function(value, index){

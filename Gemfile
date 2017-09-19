@@ -36,6 +36,7 @@ gem 'tweetstream'
 gem 'jquery-rails'
 gem 'groupdate'
 gem 'pry-rails'
+gem 'httparty'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

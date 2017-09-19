@@ -5,6 +5,8 @@ class CreateSearches < ActiveRecord::Migration[5.1]
       t.text :text
       t.text :screen_name
       t.text :profile_image_url
+      t.text :lat
+      t.text :lng
       t.timestamps
     end
   end
