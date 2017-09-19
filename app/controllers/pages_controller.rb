@@ -41,7 +41,9 @@ class PagesController < ApplicationController
 
       # tweet.created_at
     #saving the data to the database to be served in json format so D3 can utilise it
-    Search.create :created_at => @created_at, :text => @text, :screen_name => @screen_name, :profile_image_url => @profile_image_url, :lat => @lat, :lng => @lng
+      unless tweet.geo.coordinates[0].nil?
+        Search.create :created_at => @created_at, :text => @text, :screen_name => @screen_name, :profile_image_url => @profile_image_url, :lat => @lat, :lng => @lng
+      end
     end
 
   end
