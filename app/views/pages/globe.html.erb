@@ -28,7 +28,6 @@
           maxZoom: 5,
           attribution: 'NASA'
         }).addTo(earth);
-    earth.setView([<%= @lat %>, <%= @lng %>], 2);
     var tweets = [
       ["@Jae-Hee: Wheee", -33.867916, 151.205969],
       ["@Serene: Help", -40.99497, 174.50808],
@@ -51,9 +50,6 @@
   }
   const setView = function(zoom) {
     earth.setView([<%= @lat %>, <%= @lng %>], zoom);
-  }
-  const setView = function(zoom) {
-    earth.setView([-33.867916, 151.205969], zoom);
   }
 
   function showValue(newValue){
