@@ -28,6 +28,12 @@
       var [message, lat, lng] = tweets[i]
       var marker = WE.marker([lat, lng], '/assets/Twitter.png', 30, 30).addTo(earth);
       marker.bindPopup(message);
+      marker.on('mouseover', function(e) {
+        this.openPopup();
+      });
+      marker.on('mouseout', function(e) {
+        this.closePopup();
+      });
     }
   }
 </script>
