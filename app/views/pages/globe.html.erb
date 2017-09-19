@@ -15,24 +15,26 @@
 <script>
   let earth;
   function initialize() {
-    earth = new WE.map('earth_div');
-    earth.setView([<%= @lat %>, <%= @lng %>], 3);
-    WE.tileLayer('http://data.webglearth.com/natural-earth-color/{z}/{x}/{y}.jpg', {
-      tileSize: 256,
-      bounds: [[-85, -180], [85, 180]],
-      minZoom: 0,
-      maxZoom: 16,
-      attribution: 'WebGLEarth example',
-      tms: true,
-    }).addTo(earth);
-
+    var options = {
+          sky: true,
+          dragging: true,
+          tilting: true,
+          center: [<%= @lat %>, <%= @lng %>],
+          zoom: 2
+        };
+    earth = new WE.map('earth_div', options);
+    WE.tileLayer('http://tileserver.maptiler.com/nasa/{z}/{x}/{y}.jpg', {
+          minZoom: 0,
+          maxZoom: 5,
+          attribution: 'NASA'
+        }).addTo(earth);
+    earth.setView([<%= @lat %>, <%= @lng %>], 2);
     var tweets = [
       ["@Jae-Hee: Wheee", -33.867916, 151.205969],
       ["@Serene: Help", -40.99497, 174.50808],
-		  ["@Josh: Calm", -41.49413, 173.5421],
-		  ["@God: Save Us All", -40.98585, 174.50659]
+      ["@Josh: Calm", -41.49413, 173.5421],
+      ["@God: Save Us All", -40.98585, 174.50659]
     ];
-
     tweets.forEach(function(tweet) {
       var [message, lat, lng] = tweet
       var marker = WE.marker([lat, lng], '/assets/Twitter.png', 30, 30).addTo(earth);
