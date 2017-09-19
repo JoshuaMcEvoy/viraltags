@@ -47,6 +47,7 @@ class PagesController < ApplicationController
       Search.create :created_at => @created_at, :text => @text, :screen_name => @screen_name, :profile_image_url => @profile_image_url, :lat => @lat, :lng => @lng
       end
     end
+
   end
 
   def home
