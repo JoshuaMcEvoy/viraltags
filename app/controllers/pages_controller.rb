@@ -14,19 +14,19 @@ class PagesController < ApplicationController
   end
 
   def lookup
+
     Search.destroy_all
 
     # Geocode:-33.821008,151.192018,Twitter%20HQ,2500km
-    # geocode_api_key = ENV ['GEOCODING_API_KEY']
+    geocode_api_key = ENV['GEOCODING_API_KEY']
 
     #taking params and compiling string together with +
     address = "#{params[:hashtag]}"
     compliedAdress = address.gsub!(" ", "+")
 
-    # raise 'hell'
 
     #using Google maps api to convert params into lat and lng coordinates
-    url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{compliedAdress},+CA&key=AIzaSyCFxZqBX90SQYfICqylTVVhZxWFE3oQPfc"
+    url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{compliedAdress},+CA&key=#{geocode_api_key}"
     info = HTTParty.get url
 
     #Googles API returns multiple results with varying accuracy, this will return the first result in the array
@@ -69,4 +69,30 @@ class PagesController < ApplicationController
       format.json { render :json => searches.to_json(:methods => :minutes_since_midnight) }
     end
   end
+
+  def locationPicker
+    address = "#{params[:hashtag]}"
+    compliedAdress = address.gsub!(" ", "+")
+
+    #using Google maps api to convert params into lat and lng coordinates
+    url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{compliedAdress},+CA&key=AIzaSyCFxZqBX90SQYfICqylTVVhZxWFE3oQPfc"
+    info = HTTParty.get url
+
+    @infoResults = info["results"]
+
+    # respond_to do |format|
+    #   format.html
+    #   format.json { render :json => info["results"]}
+    # end
+
+    # info["results"].each do |k|
+    #   puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    #   puts "k = #{k}"
+    #   puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    #   @k = k
+    #
+    # end
+  end
+
+
 end
