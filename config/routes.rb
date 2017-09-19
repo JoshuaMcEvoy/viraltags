@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get 'pages/index'
   get 'pages/data', :defaults => {:format => 'json'}
   get '/pages/lookup' => 'pages#lookup'
+  get '/pages/globe' => 'pages#globe'
 end
