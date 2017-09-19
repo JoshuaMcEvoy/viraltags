@@ -16,7 +16,7 @@
   let earth;
   function initialize() {
     earth = new WE.map('earth_div');
-    earth.setView([-33.867916, 151.205969], 4);
+    earth.setView([-33.867916, 151.205969], 3);
     WE.tileLayer('http://data.webglearth.com/natural-earth-color/{z}/{x}/{y}.jpg', {
       tileSize: 256,
       bounds: [[-85, -180], [85, 180]],
