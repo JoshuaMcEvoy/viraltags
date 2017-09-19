@@ -1,38 +1,22 @@
 <body onload="initialize()">
   <div class="container">
     <div id="earth_div">
-      <div id="slidecontainer">
-  <input type="range" min="1" max="5" value="3" class="slider" step="1" id="myRange" onchange="showValue(this.value), setView(this.value)"/>
-  <br>
-  <span id="range">3</span>
-</div>
-<div id="description">
-  <p>
-    A visualization of tweets based on location input
-  </p>
-</div>
-      <div id="zoombuttons">
+      <div id="buttons">
         <input type="button" value="Zoom to level 1" onclick="setView(1);">
         <input type="button" value="Zoom to level 2" onclick="setView(2);">
         <input type="button" value="Zoom to level 3" onclick="setView(3);">
         <input type="button" value="Zoom to level 4" onclick="setView(4);">
         <input type="button" value="Zoom to level 5" onclick="setView(5);">
       </div>
-      <div id="info">
-  Made with  💕  by Josh McEvoy, Serene Zhuang, Jae-Hee Park <span class="bull">&bull;</span>
-  Source code on <a href=# >Github</a> <span class="bull">&bull;</span>
-  Powered by <a href="//www.chromeexperiments.com/globe">WebGL Globe</a> <span class="bull">&bull;</span>
-  Data from <a href=#> Twitter</a>
-</div>
     </div>
   </div>
 </body>
 <script src="http://www.webglearth.com/v2/api.js"></script>
 <script>
-  var earth
+  let earth;
   function initialize() {
     earth = new WE.map('earth_div');
-    earth.setView([-33.867916, 151.205969], 4);
+    earth.setView([<%= @lat %>, <%= @lng %>], 3);
     WE.tileLayer('http://data.webglearth.com/natural-earth-color/{z}/{x}/{y}.jpg', {
       tileSize: 256,
       bounds: [[-85, -180], [85, 180]],
@@ -49,17 +33,22 @@
 		  ["@God: Save Us All", -40.98585, 174.50659]
     ];
 
-    for (var i = 0; i < tweets.length; i++) {
-      var [message, lat, lng] = tweets[i]
+    tweets.forEach(function(tweet) {
+      var [message, lat, lng] = tweet
       var marker = WE.marker([lat, lng], '/assets/Twitter.png', 30, 30).addTo(earth);
       marker.bindPopup(message);
       marker.on('mouseover', function(e) {
-        this.openPopup();
+        console.log(e);
+        console.log(this);
+        marker.openPopup();
       });
       marker.on('mouseout', function(e) {
-        this.closePopup();
+        marker.closePopup();
       });
-    }
+    })
+  }
+  const setView = function(zoom) {
+    earth.setView([<%= @lat %>, <%= @lng %>], zoom);
   }
   const setView = function(zoom) {
     earth.setView([-33.867916, 151.205969], zoom);
