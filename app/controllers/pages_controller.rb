@@ -38,7 +38,7 @@ class PagesController < ApplicationController
 
       unless tweet.geo.coordinates[0].nil?
         t = Search.create :created_at => @created_at, :text => @text, :screen_name => @screen_name, :profile_image_url => @profile_image_url, :latitude => @lat, :longitude => @lng
-        @tweet_locations << [t.text, t.latitude, t.longitude]
+        @tweet_locations << [t.text, t.latitude, t.longitude, t.id]
       end
       @searches = Search.all
     end
