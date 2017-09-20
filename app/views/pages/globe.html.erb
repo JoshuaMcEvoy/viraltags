@@ -1,6 +1,10 @@
 <body onload="initialize()">
   <div class="container">
     <div id="earth_div">
+      <form action="/pages/globe" class="searchBar" >
+        <input type="text" name="address" placeholder="Search for a location" class="searchInput">
+        <button class="searchButton">Search</button>
+      </form>
       <div class="zoombuttons">
         <div id="slidecontainer">
           <input type="button" value="-" onclick="setViewminus();"><input type="range" min="1" max="15" value="2" class="slider" step="2" id="myRange" onchange="showValue(this.value), setView(this.value)"/><input type="button" value="+" onclick="setViewplus();">
@@ -37,7 +41,7 @@
         }).addTo(earth);
     earth.setView([<%= @lat %>, <%= @lng %>], 2);
     var tweets = <%== @tweet_locations.to_json %>;
-    tweets.forEach(function(tweet){
+    tweets.forEach(function(tweet) {
       var [message, lat, lng] = tweet
       var marker = WE.marker([lat, lng], '/assets/twitter.png', 30, 30).addTo(earth);
       marker.bindPopup(message);
