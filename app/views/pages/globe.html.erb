@@ -37,16 +37,14 @@
           zoom: 2
         };
     earth = new WE.map('earth_div', options);
-    WE.tileLayer('//tileserver.maptiler.com/nasa/{z}/{x}/{y}.jpg', {
-          minZoom: 0,
-          maxZoom: 5,
-          attribution: 'NASA'
+    WE.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '© OpenStreetMap'
         }).addTo(earth);
     earth.setView([<%= @lat %>, <%= @lng %>], 2);
     var tweets = <%== @tweet_locations.to_json %>;
-    tweets.forEach(function(tweet) {
+    tweets.forEach(function(tweet)
       var [message, lat, lng] = tweet
-      var marker = WE.marker([lat, lng], '/assets/Twitter.png', 30, 30).addTo(earth);
+      var marker = WE.marker([lat, lng], '/assets/twitter.png', 30, 30).addTo(earth);
       marker.bindPopup(message);
       marker.on('mouseover', function(e) {
         marker.openPopup();
