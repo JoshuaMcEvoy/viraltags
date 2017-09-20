@@ -29,7 +29,7 @@
 <script>
   let earth;
   function initialize() {
-    var options = {
+    let options = {
           sky: true,
           dragging: true,
           tilting: true,
@@ -40,10 +40,10 @@
           attribution: '© OpenStreetMap'
         }).addTo(earth);
     earth.setView([<%= @lat %>, <%= @lng %>], 2);
-    var tweets = <%== @tweet_locations.to_json %>;
+    let tweets = <%== @tweet_locations.to_json %>;
     tweets.forEach(function(tweet) {
-      var [message, lat, lng] = tweet
-      var marker = WE.marker([lat, lng], '/assets/twitter.png', 30, 30).addTo(earth);
+      let [message, lat, lng] = tweet
+      let marker = WE.marker([lat, lng], '/assets/twitter.png', 30, 30).addTo(earth);
       marker.bindPopup(message);
       marker.on('mouseover', function(e) {
         marker.openPopup();
