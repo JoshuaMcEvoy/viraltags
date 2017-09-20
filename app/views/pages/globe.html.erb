@@ -28,12 +28,7 @@
           attribution: 'NASA'
         }).addTo(earth);
     earth.setView([<%= @lat %>, <%= @lng %>], 2);
-    var tweets = [
-      ["@Jae-Hee: Wheee", -33.867916, 151.205969],
-      ["@Serene: Help", -40.99497, 174.50808],
-      ["@Josh: Calm", -41.49413, 173.5421],
-      ["@God: Save Us All", -40.98585, 174.50659]
-    ];
+    var tweets = <%== @tweet_locations.to_json %>;
     tweets.forEach(function(tweet) {
       var [message, lat, lng] = tweet
       var marker = WE.marker([lat, lng], '/assets/Twitter.png', 30, 30).addTo(earth);
