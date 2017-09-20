@@ -7,8 +7,9 @@
 #  text              :text
 #  screen_name       :text
 #  profile_image_url :text
-#  lat               :text
-#  lng               :text
+#  address           :text
+#  latitude          :text
+#  longitude         :text
 #  updated_at        :datetime         not null
 #
 

@@ -9,17 +9,20 @@ body {
   margin: 0px;
 }
 
+// E6ECF0
+
+// changes colour of input placeholder text
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: #E6ECF0;
+  color: #383A3B;
 }
 ::-moz-placeholder { /* Firefox 19+ */
-  color: #E6ECF0;
+  color: #383A3B;
 }
 :-ms-input-placeholder { /* IE 10+ */
-  color: #E6ECF0;
+  color: #383A3B;
 }
 :-moz-placeholder { /* Firefox 18- */
-  color: #E6ECF0;
+  color: #383A3B;
 }
 
 //////////////////////////////////////////////////
@@ -99,13 +102,15 @@ a {
 
 .searchBar {
   padding: 10px 12px;
+  position: fixed;
+  left: 25vw;
   width: 50%;
   margin: 0 auto;
-  background-color: #E8F4FB;
   display: flex;
   flex-direction: row;
   align-items: center;
   min-width: 300px;
+  justify-content: center;
 }
 
 .searchButton {
@@ -136,7 +141,7 @@ a {
   white-space: nowrap;
   text-overflow: ellipsis;
   padding: 8px 16px;
-  background-color: #FFF;
+  background-color: black;
   line-height: 20px;
   border: 1px solid rgba(0,132,180,0.5);
   border-radius: 8px;
@@ -216,7 +221,7 @@ a:hover{
   left: 0;
   background-color: #000;
   position: absolute !important;
-  height: 800px;
+  height: 100vh;
 }
 #info {
   color: white;
@@ -241,35 +246,35 @@ a:hover{
   margin-top: 50px;
   margin-left: 50px;
 }
-
 #zoombuttons button {
   padding: 10px;
   font-size: 40px;
   line-height: 20px;
 }
-
 #range {
   color: white;
 }
-
 .minusplus {
   color: white;
   font-size: 16px;
   font-weight: bold;
   text-align: center;
 }
-
 #tweetbox {
   max-height: 500px;
   max-width: 250px;
   background-color: rgba(255, 255, 255, 0.5);
-  overflow-y: scroll;
+  overflow: scroll;
   font-size: 12px;
   box-sizing: border-box;
   padding: 10px;
 }
-
 #tweetbox span {
   color: #1B95E0;
   font-weight: bold;
+}
+
+
+#geoLocationResultsContainer {
+  margin-top: 50px;
 }
