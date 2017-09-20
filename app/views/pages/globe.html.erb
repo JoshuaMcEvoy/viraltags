@@ -19,7 +19,6 @@
           sky: true,
           dragging: true,
           tilting: true,
-          center: [<%= @lat %>, <%= @lng %>],
           zoom: 2
         };
     earth = new WE.map('earth_div', options);
@@ -52,9 +51,7 @@
   const setView = function(zoom) {
     earth.setZoom(zoom);
   }
-
   function showValue(newValue){
 	document.getElementById("range").innerHTML=newValue;
 }
-console.log(<%= @tweets %>)
 </script>
