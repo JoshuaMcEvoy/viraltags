@@ -38,11 +38,11 @@
         };
     earth = new WE.map('earth_div', options);
     WE.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: '© OpenStreetMap'
+          attribution: 'OpenStreetMap'
         }).addTo(earth);
     earth.setView([<%= @lat %>, <%= @lng %>], 2);
     var tweets = <%== @tweet_locations.to_json %>;
-    tweets.forEach(function(tweet)
+    tweets.forEach(function(tweet) {
       var [message, lat, lng] = tweet
       var marker = WE.marker([lat, lng], '/assets/twitter.png', 30, 30).addTo(earth);
       marker.bindPopup(message);
