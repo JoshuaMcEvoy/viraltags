@@ -49,6 +49,7 @@ class PagesController < ApplicationController
         t = Search.create :created_at => @created_at, :text => @text, :screen_name => @screen_name, :profile_image_url => @profile_image_url, :latitude => @lat, :longitude => @lng
         @tweet_locations << [t.text, t.latitude, t.longitude]
       end
+      @searches = Search.all
     end
   end
 
