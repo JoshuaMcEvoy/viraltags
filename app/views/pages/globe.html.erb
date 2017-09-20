@@ -2,15 +2,10 @@
   <div class="container">
     <div id="earth_div">
       <div class="zoombuttons">
-        <input type="button" value="Zoom to 1" onclick="setView(1);"><br>
-        <input type="button" value="Zoom to 2" onclick="setView(2);"><br>
-        <input type="button" value="Zoom to 3" onclick="setView(3);"><br>
-        <input type="button" value="Zoom to 4" onclick="setView(4);"><br>
-        <input type="button" value="Zoom to 5" onclick="setView(5);">
         <div id="slidecontainer">
-          <input type="button" value="-" onclick="setViewminus();"><input type="range" min="1" max="5" value="3" class="slider" step="1" id="myRange" onchange="showValue(this.value), setView(this.value)"/><input type="button" value="+" onclick="setViewplus();">
+          <input type="button" value="-" onclick="setViewminus();"><input type="range" min="1" max="15" value="2" class="slider" step="2" id="myRange" onchange="showValue(this.value), setView(this.value)"/><input type="button" value="+" onclick="setViewplus();">
           <br>
-          <span id="range">3</span>
+          <span id="range">2</span>
         </div>
         <div id="tweetbox">
           <% @searches.each do |tweet| %>
@@ -42,7 +37,7 @@
         }).addTo(earth);
     earth.setView([<%= @lat %>, <%= @lng %>], 2);
     var tweets = <%== @tweet_locations.to_json %>;
-    tweets.forEach(function(tweet)
+    tweets.forEach(function(tweet){
       var [message, lat, lng] = tweet
       var marker = WE.marker([lat, lng], '/assets/twitter.png', 30, 30).addTo(earth);
       marker.bindPopup(message);
@@ -57,6 +52,26 @@
 
   const setView = function(zoom) {
     earth.setView([<%= @lat %>, <%= @lng %>], zoom);
+  }
+  const setViewminus = function() {
+    let current = $('#myRange').val();
+    current = parseInt(current)
+    if(current > 1) {
+      current = current - 2
+    earth.setView([<%= @lat %>, <%= @lng %>], current);
+    $('#myRange').val(current);
+    document.getElementById("range").innerHTML=current;
+  }
+  }
+  const setViewplus = function() {
+    let current = $('#myRange').val();
+    current = parseInt(current)
+    if(current < 14) {
+      current = current + 2
+    earth.setView([<%= @lat %>, <%= @lng %>], current);
+    $('#myRange').val(current);
+    document.getElementById("range").innerHTML=current;
+  }
   }
   function showValue(newValue){
     document.getElementById("range").innerHTML=newValue;
