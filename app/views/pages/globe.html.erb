@@ -44,7 +44,7 @@
     var tweets = <%== @tweet_locations.to_json %>;
     tweets.forEach(function(tweet) {
       var [message, lat, lng] = tweet
-      var marker = WE.marker([lat, lng], '/assets/Twitter.png', 30, 30).addTo(earth);
+      var marker = WE.marker([lat, lng], '/twitter.png', 30, 30).addTo(earth);
       marker.bindPopup(message);
       marker.on('mouseover', function(e) {
         marker.openPopup();
