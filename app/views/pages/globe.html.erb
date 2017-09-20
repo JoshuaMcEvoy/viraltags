@@ -16,42 +16,77 @@
   let earth;
   function initialize() {
     var options = {
+<<<<<<< HEAD
           sky: true,
           dragging: true,
           tilting: true,
           zoom: 2
         };
+=======
+      sky: true,
+      dragging: true,
+      tilting: true,
+      center: [
+        <%= @lat %>, <%= @lng %>
+      ],
+      zoom: 2
+    };
+>>>>>>> 37b2719c0a8ee1d0a7481be52f9589057fc6108a
     earth = new WE.map('earth_div', options);
     WE.tileLayer('http://tileserver.maptiler.com/nasa/{z}/{x}/{y}.jpg', {
-          minZoom: 0,
-          maxZoom: 5,
-          attribution: 'NASA'
-        }).addTo(earth);
-    earth.setView([<%= @lat %>, <%= @lng %>], 2);
+      minZoom: 0,
+      maxZoom: 5,
+      attribution: 'NASA'
+    }).addTo(earth);
     var tweets = [
       ["@Jae-Hee: Wheee", -33.867916, 151.205969],
       ["@Serene: Help", -40.99497, 174.50808],
       ["@Josh: Calm", -41.49413, 173.5421],
       ["@God: Save Us All", -40.98585, 174.50659]
     ];
-    tweets.forEach(function(tweet) {
-      var [message, lat, lng] = tweet
-      var marker = WE.marker([lat, lng], '/assets/Twitter.png', 30, 30).addTo(earth);
+    // d3.json('/pages/data', function (json) {
+      // root = json
+      // json.forEach(function (value, index) {
+      //   tweets.push([
+      //     json[index].text,
+      //     parseFloat(json[index].lat),
+      //     parseFloat(json[index].lng)
+      //   ]);
+      // })
+    // });
+    // let tweetArray = tweets[0];
+    console.log(tweets);
+    // console.log(tweetArray);
+    tweets.forEach(function (tweet) {
+      var [message,
+        lat,
+        lng] = tweet
+      var marker = WE.marker([
+        lat, lng
+      ], '/assets/Twitter.png', 30, 30).addTo(earth);
       marker.bindPopup(message);
-      marker.on('mouseover', function(e) {
+      marker.on('mouseover', function (e) {
         console.log(e);
         console.log(this);
         marker.openPopup();
       });
-      marker.on('mouseout', function(e) {
+      marker.on('mouseout', function (e) {
         marker.closePopup();
       });
     })
   }
-  const setView = function(zoom) {
-    earth.setZoom(zoom);
+  const setView = function (zoom) {
+    if (earth.getZoom() < 6) {
+      earth.setZoom(zoom);
+    };
   }
+  function showValue(newValue) {
+    document.getElementById("range").innerHTML = newValue;
+  }
+<<<<<<< HEAD
   function showValue(newValue){
 	document.getElementById("range").innerHTML=newValue;
 }
+=======
+>>>>>>> 37b2719c0a8ee1d0a7481be52f9589057fc6108a
 </script>
