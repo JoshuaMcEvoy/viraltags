@@ -28,15 +28,6 @@ class PagesController < ApplicationController
     @tweet_locations = []
     @tweets = $twitter.search("#{geoCode}", :result_type => "recent").take(200).collect do |tweet|
 
-    # {
-    #   :created_at => tweet.created_at.beginning_of_minute,
-    #   :text => tweet.text,
-    #   :screen_name => tweet.user.screen_name,
-    #   :profile_url => tweet.user.profile_background_image_url,
-    #   :lat => tweet.geo.coordinates[0],
-    #   :lng => tweet.geo.coordinates[1]
-    # }
-
       # Pulling out the individual data we need
       @created_at = tweet.created_at.beginning_of_minute()
       @text = tweet.text
@@ -55,5 +46,13 @@ class PagesController < ApplicationController
 
   def lookup
     render json: @tweets
+  end
+
+  def data
+    searches = Search.all
+    respond_to do |format|
+      format.html
+      format.json { render :json => searches.to_json(:methods => :minutes_since_midnight) }
+    end
   end
 end
