@@ -56,25 +56,4 @@ class PagesController < ApplicationController
   def lookup
     render json: @tweets
   end
-
-  def data
-    searches = Search.all
-    respond_to do |format|
-      format.html
-      format.json { render :json => searches.to_json(:methods => :minutes_since_midnight) }
-    end
-  end
-
-  # def locationPicker
-  #   geocode_api_key = ENV['GEOCODING_API_KEY']
-  #   address = "#{params[:hashtag]}"
-  #   compliedAdress = address.gsub!(" ", "+")
-  #
-  #   #using Google maps api to convert params into lat and lng coordinates
-  #   url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{compliedAdress},+CA&key=#{geocode_api_key}"
-  #   info = HTTParty.get url
-  #
-  #   @infoResults = info["results"]
-  #
-  # end
 end
