@@ -8,7 +8,7 @@
     </div>
   </div>
 </body>
-<script src="http://www.webglearth.com/v2/api.js"></script>
+<script src="//www.webglearth.com/v2/api.js"></script>
 <script>
   let earth;
   function initialize() {
@@ -19,7 +19,7 @@
           zoom: 2
         };
     earth = new WE.map('earth_div', options);
-    WE.tileLayer('http://tileserver.maptiler.com/nasa/{z}/{x}/{y}.jpg', {
+    WE.tileLayer('//tileserver.maptiler.com/nasa/{z}/{x}/{y}.jpg', {
           minZoom: 0,
           maxZoom: 5,
           attribution: 'NASA'
