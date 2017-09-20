@@ -19,10 +19,10 @@
           zoom: 2
         };
     earth = new WE.map('earth_div', options);
-    WE.tileLayer('//tileserver.maptiler.com/nasa/{z}/{x}/{y}.jpg', {
+    WE.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           minZoom: 0,
           maxZoom: 5,
-          attribution: 'NASA'
+          attribution: '© OpenStreetMap'
         }).addTo(earth);
     earth.setView([-33.869830, 151.208557], 2);
 
