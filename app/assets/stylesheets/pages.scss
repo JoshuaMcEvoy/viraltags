@@ -241,17 +241,40 @@ a:hover{
   line-height: 24px;
 }
 
-#zoombuttons {
+.zoombuttons {
   position: absolute;
   margin-top: 50px;
+  margin-left: 50px;
 }
-
 #zoombuttons button {
   padding: 10px;
   font-size: 40px;
   line-height: 20px;
 }
-
 #range {
   color: white;
+}
+.minusplus {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+#tweetbox {
+  max-height: 500px;
+  max-width: 250px;
+  background-color: rgba(255, 255, 255, 0.5);
+  overflow: scroll;
+  font-size: 12px;
+  box-sizing: border-box;
+  padding: 10px;
+}
+#tweetbox span {
+  color: #1B95E0;
+  font-weight: bold;
+}
+
+
+#geoLocationResultsContainer {
+  margin-top: 50px;
 }

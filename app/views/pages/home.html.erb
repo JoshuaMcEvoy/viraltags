@@ -26,19 +26,6 @@
         }).addTo(earth);
     earth.setView([-33.869830, 151.208557], 2);
 
-    tweets.forEach(function(tweet) {
-      var [message, lat, lng] = tweet
-      var marker = WE.marker([lat, lng], '/assets/Twitter.png', 30, 30).addTo(earth);
-      marker.bindPopup(message);
-      marker.on('mouseover', function(e) {
-        console.log(e);
-        console.log(this);
-        marker.openPopup();
-      });
-      marker.on('mouseout', function(e) {
-        marker.closePopup();
-      });
-    })
   }
   const setView = function(zoom) {
     earth.setView([-33.869830, 151.208557], zoom);
