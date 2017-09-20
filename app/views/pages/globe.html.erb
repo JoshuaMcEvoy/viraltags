@@ -1,12 +1,27 @@
 <body onload="initialize()">
   <div class="container">
     <div id="earth_div">
-      <div id="buttons">
-        <input type="button" value="Zoom to level 1" onclick="setView(1);">
-        <input type="button" value="Zoom to level 2" onclick="setView(2);">
-        <input type="button" value="Zoom to level 3" onclick="setView(3);">
-        <input type="button" value="Zoom to level 4" onclick="setView(4);">
-        <input type="button" value="Zoom to level 5" onclick="setView(5);">
+      <div class="zoombuttons">
+        <input type="button" value="Zoom to 1" onclick="setView(1);"><br>
+        <input type="button" value="Zoom to 2" onclick="setView(2);"><br>
+        <input type="button" value="Zoom to 3" onclick="setView(3);"><br>
+        <input type="button" value="Zoom to 4" onclick="setView(4);"><br>
+        <input type="button" value="Zoom to 5" onclick="setView(5);">
+        <div id="slidecontainer">
+          <input type="button" value="-" onclick="setViewminus();"><input type="range" min="1" max="5" value="3" class="slider" step="1" id="myRange" onchange="showValue(this.value), setView(this.value)"/><input type="button" value="+" onclick="setViewplus();">
+          <br>
+          <span id="range">3</span>
+        </div>
+        <div id="tweetbox">
+          <% @searches.each do |tweet| %>
+          <ul>
+            <li>
+              <span><%= tweet.screen_name %></span>
+              <%= tweet.text %>
+            </li>
+          </ul>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
@@ -46,4 +61,7 @@
   const setView = function(zoom) {
     earth.setView([<%= @lat %>, <%= @lng %>], zoom);
   }
+  function showValue(newValue){
+    document.getElementById("range").innerHTML=newValue;
+}
 </script>
