@@ -14,9 +14,9 @@
         <div id="tweetbox">
           <% @searches.each do |tweet| %>
           <ul>
-            <li>
-              <span><%= tweet.screen_name %></span>
-              <%= tweet.text %>
+            <li class='tweet<%=tweet.id%>'>
+              <span id="username"><%= tweet.screen_name %></span>
+              <span><%= tweet.text %></span>
             </li>
           </ul>
           <% end %>
@@ -37,19 +37,27 @@
         };
     earth = new WE.map('earth_div', options);
     WE.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: '© OpenStreetMap'
+          attribution: 'OpenStreetMap'
         }).addTo(earth);
     earth.setView([<%= @lat %>, <%= @lng %>], 2);
     let tweets = <%== @tweet_locations.to_json %>;
     tweets.forEach(function(tweet) {
-      let [message, lat, lng] = tweet
+      let [message, lat, lng, id] = tweet
       let marker = WE.marker([lat, lng], '/assets/twitter.png', 30, 30).addTo(earth);
       marker.bindPopup(message);
       marker.on('mouseover', function(e) {
         marker.openPopup();
+        $('.tweet'+ id).css({
+           'background' : 'hsla(194, 100%, 50%, 0.66)',
+           'font-weight' : 'bold'
+        });
       });
       marker.on('mouseout', function(e) {
         marker.closePopup();
+        $('.tweet'+ id).css({
+           'background' : 'none',
+           'font-weight' : 'normal'
+        });
       });
     })
   }
