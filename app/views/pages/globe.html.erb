@@ -1,6 +1,10 @@
 <body onload="initialize()">
   <div class="container">
     <div id="earth_div">
+      <form action="/pages/globe" class="searchBar" >
+        <input type="text" name="address" placeholder="Search for a location" class="searchInput">
+        <button class="searchButton">Search</button>
+      </form>
       <div class="zoombuttons">
         <input type="button" value="Zoom to 1" onclick="setView(1);"><br>
         <input type="button" value="Zoom to 2" onclick="setView(2);"><br>
