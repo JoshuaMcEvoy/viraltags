@@ -14,7 +14,7 @@
 
   let earth;
   function initialize() {
-    var options = {
+    let options = {
           sky: true,
           dragging: true,
           tilting: true,
@@ -26,10 +26,10 @@
           maxZoom: 5,
           attribution: '© OpenStreetMap'
         }).addTo(earth);
-    earth.setView([-33.869830, 151.208557], 2);
+    earth.setView([-25.555616, 134.330870], 2);
 
   }
   const setView = function(zoom) {
-    earth.setView([-33.869830, 151.208557], zoom);
+    earth.setView([-25.555616, 134.330870], zoom);
   }
 </script>
