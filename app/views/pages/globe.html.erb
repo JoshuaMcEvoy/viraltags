@@ -21,6 +21,7 @@
           </ul>
           <% end %>
         </div>
+        <div class='searchBar credits'>Made with 💕 By Josh McEvoy, Serene Zhuang, Jae-Hee Park 🌏 WDI 23 🌏 </div>
       </div>
     </div>
   </div>
@@ -71,6 +72,7 @@ lng = <%= tweet.longitude %>
   const setView = function(zoom) {
     earth.setView([lat, lng], zoom);
   }
+
   const setViewminus = function() {
     let current = $('#myRange').val();
     current = parseInt(current)
