@@ -7,7 +7,7 @@
       </form>
       <div class="zoombuttons">
         <div id="slidecontainer">
-          <input type="button" value="-" onclick="setViewminus();"><input type="range" min="1" max="15" value="2" class="slider" step="2" id="myRange" onchange="showValue(this.value), setView(this.value)"/><input type="button" value="+" onclick="setViewplus();">
+          <input type="button" value="-" onclick="setViewminus();"><input type="range" min="1" max="16" value="2" class="slider" step="2" id="myRange" onchange="showValue(this.value), setView(this.value)"/><input type="button" value="+" onclick="setViewplus();">
           <br>
           <span id="range">2</span>
         </div>
@@ -27,9 +27,15 @@
 </body>
 <script src="//www.webglearth.com/v2/api.js"></script>
 <script>
+let lat
+let lng
+<% @searches.each do |tweet| %>
+lat = <%= tweet.latitude %>
+lng = <%= tweet.longitude %>
+<% end %>
   let earth;
   function initialize() {
-    var options = {
+    let options = {
           sky: true,
           dragging: true,
           tilting: true,
@@ -39,12 +45,11 @@
     WE.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution: 'OpenStreetMap'
         }).addTo(earth);
-    earth.setView([<%= @lat %>, <%= @lng %>], 2);
-    var tweets = <%== @tweet_locations.to_json %>;
-    console.log(tweets);
+    earth.setView([lat, lng], 2);
+    let tweets = <%== @tweet_locations.to_json %>;
     tweets.forEach(function(tweet) {
-      var [message, lat, lng, id] = tweet
-      var marker = WE.marker([lat, lng], '/assets/twitter.png', 30, 30).addTo(earth);
+      let [message, lat, lng, id] = tweet
+      let marker = WE.marker([lat, lng], '/assets/twitter.png', 30, 30).addTo(earth);
       marker.bindPopup(message);
       marker.on('mouseover', function(e) {
         marker.openPopup();
@@ -64,14 +69,14 @@
   }
 
   const setView = function(zoom) {
-    earth.setView([<%= @lat %>, <%= @lng %>], zoom);
+    earth.setView([lat, lng], zoom);
   }
   const setViewminus = function() {
     let current = $('#myRange').val();
     current = parseInt(current)
     if(current > 1) {
       current = current - 2
-    earth.setView([<%= @lat %>, <%= @lng %>], current);
+    earth.setView([lat, lng], current);
     $('#myRange').val(current);
     document.getElementById("range").innerHTML=current;
   }
@@ -81,7 +86,7 @@
     current = parseInt(current)
     if(current < 14) {
       current = current + 2
-    earth.setView([<%= @lat %>, <%= @lng %>], current);
+    earth.setView([lat, lng], current);
     $('#myRange').val(current);
     document.getElementById("range").innerHTML=current;
   }
