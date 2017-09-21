@@ -55,9 +55,9 @@ lng = <%= tweet.longitude %>
         }).addTo(earth);
     earth.setView([lat, lng], 2);
     let tweets = <%== @tweet_locations.to_json %>;
-    tweets.forEach(function(tweet) {  
+    tweets.forEach(function(tweet) {
       let [message, lat, lng, id] = tweet
-      let marker = WE.marker([lat, lng], '/assets/twitter.png', 30, 30).addTo(earth);
+      let marker = WE.marker([lat, lng], '/assets/twitter.jpg', 30, 30).addTo(earth);
       marker.bindPopup(message);
       marker.on('mouseover', function(e) {
         marker.openPopup();
