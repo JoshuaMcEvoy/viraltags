@@ -19,12 +19,16 @@
             <button class="refreshButton" type="button">Refresh</button>
             <div class="tweetsList">
               <ul>
-                <% @searches.each do |tweet| %>
-                  <li class='tweet<%=tweet.id%>'>
-                    <span id="username"><%= tweet.screen_name %></span>
-                    <span><%= tweet.text %></span>
-                  </li>
-                  <div class="line"></div>
+                <% if @searches.nil? %>
+                  <li>No results for your area. Please try another location.</li>
+                <% else %>
+                  <% @searches.each do |tweet| %>
+                    <li class='tweet<%=tweet.id%>'>
+                      <span id="username"><%= tweet.screen_name %></span>
+                      <span><%= tweet.text %></span>
+                    </li>
+                    <div class="line"></div>
+                  <% end %>
                 <% end %>
               </ul>
             </div>
@@ -37,9 +41,14 @@
 <script>
 let lat
 let lng
-<% @searches.each do |tweet| %>
-lat = <%= tweet.latitude %>
-lng = <%= tweet.longitude %>
+<% unless @search.nil? %>
+  <% @searches.each do |tweet| %>
+    lat = <%= tweet.latitude %>
+    lng = <%= tweet.longitude %>
+  <% end %>
+<% else %>
+  lat = -25.555616
+  lng = 134.330870
 <% end %>
   let earth;
   function initialize() {
