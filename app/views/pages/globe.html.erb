@@ -5,16 +5,18 @@
         <input type="text" name="address" placeholder="Search for a location" class="searchInput">
         <button class="searchButton">Search</button>
       </form>
+
+      <div id="slidecontainer">
+        <input type="button" value="-" onclick="setViewminus();"><input type="range" min="1" max="16" value="2" class="slider" step="2" id="myRange" onchange="showValue(this.value), setView(this.value)"/><input type="button" value="+" onclick="setViewplus();">
+      </div>
+
       <div class="zoombuttons">
-        <div id="slidecontainer">
-          <input type="button" value="-" onclick="setViewminus();"><input type="range" min="1" max="16" value="2" class="slider" step="2" id="myRange" onchange="showValue(this.value), setView(this.value)"/><input type="button" value="+" onclick="setViewplus();">
-          <br>
-          <span id="range">2</span>
-        </div>
         <div id="tweetbox">
             <div class="tweetBoxHead">
               <h3>Who's tweeting</h3>
             </div>
+            <small>·</small>
+            <button class="refreshButton" type="button">Refresh</button>
             <div class="tweetsList">
               <ul>
                 <% @searches.each do |tweet| %>
@@ -22,7 +24,7 @@
                     <span id="username"><%= tweet.screen_name %></span>
                     <span><%= tweet.text %></span>
                   </li>
-                  <hr noshade/>
+                  <div class="line"></div>
                 <% end %>
               </ul>
             </div>
