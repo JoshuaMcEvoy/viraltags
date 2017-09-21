@@ -16,16 +16,26 @@ class PagesController < ApplicationController
   def globe
     Search.destroy_all
 
+
+
     # Using Geocoder gem
     info = Geocoder.search( params[:address] )
     # Picking the first search that returns from an array
-    lat = info.first.latitude
-    lng = info.first.longitude
+
+    unless info.empty?
+      lat = info.first.latitude
+      lng = info.first.longitude
+    else
+      lat = -33.862711
+      lng = 151.213026
+    end
 
     # Compiling string for the search as it has a certain format for geo searches
     geoCode = "Geocode:#{lat},#{lng},2km"
+
     # Connecting to Twitter's API and storing results in the variable @tweets
     @tweet_locations = []
+
     @tweets = $twitter.search("#{geoCode}", :result_type => "recent").take(200).collect do |tweet|
 
       # Pulling out the individual data we need
@@ -35,6 +45,7 @@ class PagesController < ApplicationController
       @profile_image_url = tweet.user.profile_background_image_url
       @lat = tweet.geo.coordinates[0]
       @lng = tweet.geo.coordinates[1]
+
 
       unless tweet.geo.coordinates[0].nil?
         r = Random.new
@@ -48,6 +59,7 @@ class PagesController < ApplicationController
         lng_rand = lng.round(6)
         t = Search.create :created_at => @created_at, :text => @text, :screen_name => @screen_name, :profile_image_url => @profile_image_url, :latitude => lat_rand, :longitude => lng_rand
         @tweet_locations << [t.text, t.latitude, t.longitude, t.id]
+
       end
       @searches = Search.all
     end
