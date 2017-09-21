@@ -29,7 +29,6 @@
               </ul>
             </div>
         </div>
-        <div class='searchBar credits'>Made with 💕 By Josh McEvoy, Serene Zhuang, Jae-Hee Park 🌏 WDI 23 🌏 </div>
       </div>
     </div>
   </div>
@@ -67,6 +66,10 @@ lng = <%= tweet.longitude %>
            'font-weight' : 'bold'
         });
       });
+      $( "li.tweet"+id )
+        .mouseover(function() {
+          marker.openPopup();
+        });
       marker.on('mouseout', function(e) {
         marker.closePopup();
         $('.tweet'+ id).css({
@@ -74,6 +77,12 @@ lng = <%= tweet.longitude %>
            'font-weight' : 'normal'
         });
       });
+
+      $( "li.tweet"+id )
+        .mouseout(function() {
+          marker.closePopup();
+        });
+
     })
   }
 
@@ -88,7 +97,6 @@ lng = <%= tweet.longitude %>
       current = current - 2
     earth.setView([lat, lng], current);
     $('#myRange').val(current);
-    document.getElementById("range").innerHTML=current;
   }
   }
   const setViewplus = function() {
@@ -98,10 +106,7 @@ lng = <%= tweet.longitude %>
       current = current + 2
     earth.setView([lat, lng], current);
     $('#myRange').val(current);
-    document.getElementById("range").innerHTML=current;
   }
   }
-  function showValue(newValue){
-    document.getElementById("range").innerHTML=newValue;
-}
+
 </script>
