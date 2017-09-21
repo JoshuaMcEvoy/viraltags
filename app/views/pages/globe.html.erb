@@ -41,7 +41,7 @@
 <script>
 let lat
 let lng
-<% unless @search.nil? %>
+<% unless @searches.nil? %>
   <% @searches.each do |tweet| %>
     lat = <%= tweet.latitude %>
     lng = <%= tweet.longitude %>
