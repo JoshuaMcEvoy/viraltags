@@ -38,6 +38,8 @@ gem 'groupdate'
 gem 'pry-rails'
 gem 'httparty'
 gem 'geocoder'
+gem 'rails_serve_static_assets'
+gem 'rails_stdout_logging'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
