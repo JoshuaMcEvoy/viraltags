@@ -75,6 +75,10 @@ let lng
            'font-weight' : 'bold'
         });
       });
+      $( "li.tweet"+id )
+        .mouseover(function() {
+          marker.openPopup();
+        });
       marker.on('mouseout', function(e) {
         marker.closePopup();
         $('.tweet'+ id).css({
@@ -82,12 +86,19 @@ let lng
            'font-weight' : 'normal'
         });
       });
+
+      $( "li.tweet"+id )
+        .mouseout(function() {
+          marker.closePopup();
+        });
+
     })
   }
 
   const setView = function(zoom) {
     earth.setView([lat, lng], zoom);
   }
+
   const setViewminus = function() {
     let current = $('#myRange').val();
     current = parseInt(current)
@@ -95,7 +106,6 @@ let lng
       current = current - 2
     earth.setView([lat, lng], current);
     $('#myRange').val(current);
-    document.getElementById("range").innerHTML=current;
   }
   }
   const setViewplus = function() {
@@ -105,10 +115,7 @@ let lng
       current = current + 2
     earth.setView([lat, lng], current);
     $('#myRange').val(current);
-    document.getElementById("range").innerHTML=current;
   }
   }
-  function showValue(newValue){
-    document.getElementById("range").innerHTML=newValue;
-}
+
 </script>
