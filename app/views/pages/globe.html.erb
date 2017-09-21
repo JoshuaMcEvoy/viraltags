@@ -27,6 +27,12 @@
 </body>
 <script src="//www.webglearth.com/v2/api.js"></script>
 <script>
+let lat
+let lng
+<% @searches.each do |tweet| %>
+lat = <%= tweet.latitude %>
+lng = <%= tweet.longitude %>
+<% end %>
   let earth;
   function initialize() {
     let options = {
@@ -39,7 +45,7 @@
     WE.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution: 'OpenStreetMap'
         }).addTo(earth);
-    earth.setView([<%= @lat %>, <%= @lng %>], 2);
+    earth.setView([lat, lng], 2);
     let tweets = <%== @tweet_locations.to_json %>;
     tweets.forEach(function(tweet) {
       let [message, lat, lng, id] = tweet
@@ -63,14 +69,14 @@
   }
 
   const setView = function(zoom) {
-    earth.setView([<%= @lat %>, <%= @lng %>], zoom);
+    earth.setView([lat, lng], zoom);
   }
   const setViewminus = function() {
     let current = $('#myRange').val();
     current = parseInt(current)
     if(current > 1) {
       current = current - 2
-    earth.setView([<%= @lat %>, <%= @lng %>], current);
+    earth.setView([lat, lng], current);
     $('#myRange').val(current);
     document.getElementById("range").innerHTML=current;
   }
@@ -80,7 +86,7 @@
     current = parseInt(current)
     if(current < 14) {
       current = current + 2
-    earth.setView([<%= @lat %>, <%= @lng %>], current);
+    earth.setView([lat, lng], current);
     $('#myRange').val(current);
     document.getElementById("range").innerHTML=current;
   }
