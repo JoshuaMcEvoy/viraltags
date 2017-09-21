@@ -37,15 +37,16 @@ class PagesController < ApplicationController
       @lng = tweet.geo.coordinates[1]
 
       unless tweet.geo.coordinates[0].nil?
-        # r = Random.new
-        # random_number = r.rand(100..999).to_s
-        # lat_string = tweet.geo.coordinates[0].to_s
-        # lat_string = lat_string[0..-1]
-        # lng_string = tweet.geo.coordinates[1].to_s
-        # lng_string = lat_string[0..-1]
-        # lat_string += random_number
-        # lng_string += random_number
-        t = Search.create :created_at => @created_at, :text => @text, :screen_name => @screen_name, :profile_image_url => @profile_image_url, :latitude => @lat, :longitude => @lng
+        r = Random.new
+        rand_number = r.rand(0.00100..0.00999)
+        rand_number2 = r.rand(0.00100..0.00999)
+        lat = tweet.geo.coordinates[0]
+        lng = tweet.geo.coordinates[1]
+        lat += rand_number
+        lng += rand_number2
+        lat_rand = lat.round(5)
+        lng_rand = lng.round(6)
+        t = Search.create :created_at => @created_at, :text => @text, :screen_name => @screen_name, :profile_image_url => @profile_image_url, :latitude => lat_rand, :longitude => lng_rand
         @tweet_locations << [t.text, t.latitude, t.longitude, t.id]
       end
       @searches = Search.all
