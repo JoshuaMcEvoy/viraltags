@@ -12,14 +12,20 @@
           <span id="range">2</span>
         </div>
         <div id="tweetbox">
-          <% @searches.each do |tweet| %>
-          <ul>
-            <li class='tweet<%=tweet.id%>'>
-              <span id="username"><%= tweet.screen_name %></span>
-              <span><%= tweet.text %></span>
-            </li>
-          </ul>
-          <% end %>
+            <div class="tweetBoxHead">
+              <h3>Who's tweeting</h3>
+            </div>
+            <div class="tweetsList">
+              <ul>
+                <% @searches.each do |tweet| %>
+                  <li class='tweet<%=tweet.id%>'>
+                    <span id="username"><%= tweet.screen_name %></span>
+                    <span><%= tweet.text %></span>
+                  </li>
+                  <hr noshade/>
+                <% end %>
+              </ul>
+            </div>
         </div>
       </div>
     </div>

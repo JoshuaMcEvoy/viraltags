@@ -1,3 +1,12 @@
+///////////////////////////////////
+/// global css starts
+//////////////////////////////////
+
+a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
 body {
   background: #e6ecf0;
   color: #14171a;
@@ -9,7 +18,24 @@ body {
   margin: 0px;
 }
 
-// E6ECF0
+hr {
+  border-color: #657786;
+
+}
+
+li {
+  margin-top: 14px;
+}
+
+nav {
+  display: inline-block;
+}
+
+ul {
+  margin: 0;
+  list-style: none;
+  padding: 0;
+}
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -41,28 +67,13 @@ select:-webkit-autofill:focus {
   color: #383A3B;
 }
 
+///////////////////////////////////
+/// global css ends
+//////////////////////////////////
+
 //////////////////////////////////////////////////
 /// NAV START
 /////////////////////////////////////////////////
-
-nav {
-  display: inline-block;
-}
-
-ul {
-  margin: 0;
-  list-style: none;
-  padding: 0;
-}
-
-li {
-  margin-top: 14px;
-}
-
-a {
-  text-decoration: none;
-  font-weight: bold;
-}
 
 // .topbar {
 //   backface-visibility: hidden;
@@ -74,39 +85,39 @@ a {
 //   left: 0;
 //   z-index: 1000;
 // }
-
-.global-nav {
-  border-bottom: 1px solid rgba(0,0,0,0.25);
-  height: 46px;
-  position: relative;
-  width: 100%;
-  margin-top: -14px;
-}
-
-.global-nav-inner {
-  background: #fff;
-  height: 100%;
-}
-
-.global-nav .container {
-    height: 100%;
-    max-width: 890px;
-    text-align: center;
-    width: auto;
-}
+//
+// .global-nav {
+//   border-bottom: 1px solid rgba(0,0,0,0.25);
+//   height: 46px;
+//   position: relative;
+//   width: 100%;
+//   margin-top: -14px;
+// }
+//
+// .global-nav-inner {
+//   background: #fff;
+//   height: 100%;
+// }
+//
+// .global-nav .container {
+//     height: 100%;
+//     max-width: 890px;
+//     text-align: center;
+//     width: auto;
+// }
 
 /////////////////////////////////////////
 /// NAV END
 /////////////////////////////////////////
 
-.bottomContainer {
-  min-height: 450px;
-  padding: 10px 12px;
-  width: 50%;
-  background: #FFF;
-  margin: 0 auto;
-  min-width: 300px;
-}
+// .bottomContainer {
+//   min-height: 450px;
+//   padding: 10px 12px;
+//   width: 50%;
+//   background: #FFF;
+//   margin: 0 auto;
+//   min-width: 300px;
+// }
 
 .container {
   margin: 0 auto;
@@ -115,6 +126,10 @@ a {
   // background-color: #fff;
   text-align: center;
 }
+
+////////////////////////////////
+/// search bar starts
+////////////////////////////////
 
 .searchBar {
   padding: 10px 12px;
@@ -167,61 +182,65 @@ a {
   outline: none;
 }
 
+////////////////////////////////
+/// search bar ends
+////////////////////////////////
 
-.twitter-share-button{
-  text-decoration: none;
-  position: relative;
-  height: 20px;
-  box-sizing: border-box;
-  padding: 1px 8px 1px 6px;
-  background-color: #1B95E0;
-  color: #fff;
-  border-radius: 3px;
-  font-weight: 500;
-  cursor: pointer;
-  font: normal normal normal 11px/18px 'Helvetica Neue',Arial,sans-serif;
-}
+
+// .twitter-share-button{
+//   text-decoration: none;
+//   position: relative;
+//   height: 20px;
+//   box-sizing: border-box;
+//   padding: 1px 8px 1px 6px;
+//   background-color: #1B95E0;
+//   color: #fff;
+//   border-radius: 3px;
+//   font-weight: 500;
+//   cursor: pointer;
+//   font: normal normal normal 11px/18px 'Helvetica Neue',Arial,sans-serif;
+// }
 
 /////////////////////////////////////////
 /// graph start
 //////////////////////////////////////////
 
-#vis-container {
-  margin-top: 50px;
-
-}
-
-h1 {
-  margin-top: 50px;
-}
-
-.axis path,
-.axis line {
-    fill: none;
-    stroke: #000;
-    shape-rendering: crispEdges;
-}
-
-.dot {
-    stroke: none;
-}
-
-circle.dot:hover {
-  color:red;
-}
-
-.tooltip {
-    position: absolute;
-    font-size: 12px;
-    width:  auto;
-    height: auto;
-    pointer-events: none;
-    background-color: white;
-}
-
-a:hover{
-  color: #0084b4;
-}
+// #vis-container {
+//   margin-top: 50px;
+//
+// }
+//
+// h1 {
+//   margin-top: 50px;
+// }
+//
+// .axis path,
+// .axis line {
+//     fill: none;
+//     stroke: #000;
+//     shape-rendering: crispEdges;
+// }
+//
+// .dot {
+//     stroke: none;
+// }
+//
+// circle.dot:hover {
+//   color:red;
+// }
+//
+// .tooltip {
+//     position: absolute;
+//     font-size: 12px;
+//     width:  auto;
+//     height: auto;
+//     pointer-events: none;
+//     background-color: white;
+// }
+//
+// a:hover{
+//   color: #0084b4;
+// }
 ////////////////////////////////////////
 /// graph ends
 ////////////////////////////////////////
@@ -230,7 +249,30 @@ a:hover{
 /////////////Globe///////////////////////
 /////////////////////////////////////////
 
-#earth_div{
+.minusplus {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.zoombuttons {
+  position: absolute;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+
+#zoombuttons button {
+  padding: 10px;
+  font-size: 40px;
+  line-height: 20px;
+}
+
+#range {
+  color: white;
+}
+
+#earth_div {
   top: 0;
   right: 0;
   bottom: 0;
@@ -239,6 +281,7 @@ a:hover{
   position: absolute !important;
   height: 100vh;
 }
+
 #info {
   color: white;
   font-size: 14px;
@@ -257,40 +300,41 @@ a:hover{
   line-height: 24px;
 }
 
-.zoombuttons {
-  position: absolute;
-  margin-top: 50px;
-  margin-left: 50px;
-}
-#zoombuttons button {
-  padding: 10px;
-  font-size: 40px;
-  line-height: 20px;
-}
-#range {
-  color: white;
-}
-.minusplus {
-  color: white;
-  font-size: 16px;
+//////////////////////////////////////
+/// tweetbox starts
+//////////////////////////////////////
+
+.tweetBoxHead {
+  font-size: 18px;
   font-weight: bold;
-  text-align: center;
+  color: #14171a;
+  display: inline;
+  line-height: 0px;
+  text-align: left;
 }
+
+.tweetsList {
+  overflow: scroll;
+}
+
 #tweetbox {
   max-height: 500px;
   max-width: 250px;
-  background-color: rgba(255, 255, 255, 0.5);
-  overflow: scroll;
+  background-color: rgba(255, 255, 255, 0.9);
   font-size: 12px;
   box-sizing: border-box;
   padding: 10px;
 }
+
 #tweetbox #username {
   color: #1B95E0;
   font-weight: bold;
 }
 
+//////////////////////////////////////
+/// tweetbox starts
+//////////////////////////////////////
 
-#geoLocationResultsContainer {
-  margin-top: 50px;
-}
+// #geoLocationResultsContainer {
+//   margin-top: 50px;
+// }
