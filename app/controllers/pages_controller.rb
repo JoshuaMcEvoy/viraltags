@@ -38,8 +38,8 @@ class PagesController < ApplicationController
 
       unless tweet.geo.coordinates[0].nil?
         r = Random.new
-        rand_number = r.rand(0.00100..0.00999)
-        rand_number2 = r.rand(0.00100..0.00999)
+        rand_number = r.rand(0.000100..0.000999)
+        rand_number2 = r.rand(0.000100..0.000999)
         lat = tweet.geo.coordinates[0]
         lng = tweet.geo.coordinates[1]
         lat += rand_number

@@ -57,7 +57,7 @@ lng = <%= tweet.longitude %>
     let tweets = <%== @tweet_locations.to_json %>;
     tweets.forEach(function(tweet) {
       let [message, lat, lng, id] = tweet
-      let marker = WE.marker([lat, lng], '/assets/twitter.png', 30, 30).addTo(earth);
+      let marker = WE.marker([lat, lng], '/assets/twitter.jpg', 30, 30).addTo(earth);
       marker.bindPopup(message);
       marker.on('mouseover', function(e) {
         marker.openPopup();
@@ -66,6 +66,10 @@ lng = <%= tweet.longitude %>
            'font-weight' : 'bold'
         });
       });
+      $( "li.tweet"+id )
+        .mouseover(function() {
+          marker.openPopup();
+        });
       marker.on('mouseout', function(e) {
         marker.closePopup();
         $('.tweet'+ id).css({
@@ -73,12 +77,19 @@ lng = <%= tweet.longitude %>
            'font-weight' : 'normal'
         });
       });
+
+      $( "li.tweet"+id )
+        .mouseout(function() {
+          marker.closePopup();
+        });
+
     })
   }
 
   const setView = function(zoom) {
     earth.setView([lat, lng], zoom);
   }
+
   const setViewminus = function() {
     let current = $('#myRange').val();
     current = parseInt(current)
@@ -86,7 +97,6 @@ lng = <%= tweet.longitude %>
       current = current - 2
     earth.setView([lat, lng], current);
     $('#myRange').val(current);
-    document.getElementById("range").innerHTML=current;
   }
   }
   const setViewplus = function() {
@@ -96,10 +106,7 @@ lng = <%= tweet.longitude %>
       current = current + 2
     earth.setView([lat, lng], current);
     $('#myRange').val(current);
-    document.getElementById("range").innerHTML=current;
   }
   }
-  function showValue(newValue){
-    document.getElementById("range").innerHTML=newValue;
-}
+
 </script>
