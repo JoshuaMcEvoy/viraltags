@@ -1,11 +1,22 @@
 <body onload="initialize()">
   <div class="container">
     <div id="earth_div">
-      <form action="/pages/globe" class="searchBar" >
+      <form action="/pages/globe" class="searchBar">
         <input type="text" name="address" placeholder="Search for a location" class="searchInput">
         <button class="searchButton">Search</button>
       </form>
     </div>
+    <button class="js-menu menu" type="button">
+      <span class="bar"></span>
+    </button>
+    <nav>
+      <h1>About</h1>
+      <p>Recent tweets within a 2km radius of search location, visualised on a globe.</p>
+      <p><b>Instructions:</b> Search location and use slider or scroll to zoom into the globe.</p>
+      <p>Rotate the globe by clicking and dragging your mouse on the globe</p>
+
+      <p>Made by: Josh McEvoy, Serene Zhuang, Jae-Hee Park - WDI23</p>
+    </nav>
   </div>
 </body>
 <script src="//www.webglearth.com/v2/api.js"></script>
@@ -31,4 +42,19 @@
   const setView = function(zoom) {
     earth.setView([-25.555616, 134.330870], zoom);
   }
+
+
+  var isActive = false;
+
+$('.js-menu').on('click', function() {
+	if (isActive) {
+		$(this).removeClass('active');
+		$('body').removeClass('menu-open');
+	} else {
+		$(this).addClass('active');
+		$('body').addClass('menu-open');
+	}
+
+	isActive = !isActive;
+});
 </script>
